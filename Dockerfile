@@ -10,6 +10,7 @@ RUN pip install -r requirements.txt
 EXPOSE 8000
 
 CMD ["cd Assignment_2"]
+CMD ["cd Assignment_2"]
 CMD ["dir"]
 
 
