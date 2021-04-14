@@ -1,0 +1,29 @@
+node {
+     stage('SCM Checkout'){
+       git 'https://github.com/vibhurai/fastpi_arangodc_cicd.git'
+   }
+  stage('test'){
+    sh '''cd Assignment_2
+    pytest
+    cd ..
+    dir'''
+  }
+   stage('build image'){
+    sh 'docker build -t kaustubhrai/demo_image:2.0.0 .'
+   }
+
+   
+    stage('Push Docker Image'){
+        withCredentials([string(credentialsId: 'dockerhubpass', variable: 'dockerhubpass')]) {
+            sh "docker login -u kaustubhrai -p ${dockerhubpass}"
+        }
+          sh 'docker push kaustubhrai/demo_image:2.0.0'
+   }
+   
+  stage('contanierise and run image'){
+    // sh 'docker run -p 8000:8000 kaustubhrai/demo_image:2.0.0'
+    sh '''cd Assignment_2
+./run'''
+  }
+   
+}
