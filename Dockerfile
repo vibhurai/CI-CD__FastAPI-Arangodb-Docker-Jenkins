@@ -4,5 +4,9 @@ COPY ./Assignment_2 /Assignment_2
 
 COPY requirements.txt /tmp
 WORKDIR /tmp
-RUN pip install -r requirements.txt
+# RUN pip install -r requirements.txt
+RUN pip install -r requirements.txt 
+WORKDIR /~
+EXPOSE 8084
 
+CMD ["dir"]
