@@ -3,6 +3,7 @@ certifi==2020.12.5
 chardet==4.0.0
 fastapi==0.63.0
 idna==2.10
+Jinja2==2.11.3
 pydantic==1.8.1
 PyJWT==2.0.1
 python-arango==7.1.0
