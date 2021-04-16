@@ -11,5 +11,6 @@ RUN pip install -r requirements.txt
 # WORKDIR /~
 EXPOSE 8000
 
-# WORKDIR /Assignment_2
+WORKDIR /Assignment_2
+CMD ["dir"]
 # CMD ["uvicorn", "main:app", "--port", "8000"]
