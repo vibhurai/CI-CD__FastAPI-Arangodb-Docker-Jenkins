@@ -7,6 +7,6 @@ WORKDIR /tmp
 # RUN pip install -r requirements.txt
 RUN pip install -r requirements.txt 
 WORKDIR /~
-EXPOSE 8084
+EXPOSE 8000
 
 CMD ["dir"]
