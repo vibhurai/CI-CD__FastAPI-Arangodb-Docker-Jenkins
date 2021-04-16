@@ -14,4 +14,9 @@ EXPOSE 8000
 
 WORKDIR /Assignment_2
 RUN chmod +x /Assignment_2/run
+<<<<<<< HEAD
 CMD ["/run"]
+=======
+CMD ["/run"]
+# CMD ["uvicorn", "main:app", "--port", "8000"]
+>>>>>>> 3b7e0668f8ecbda31322e0502c28812b2e9e1e0b
