@@ -13,5 +13,5 @@ EXPOSE 8000
 
 WORKDIR /Assignment_2
 RUN chmod +x /Assignment_2/run
-ENTRYPOINT ["./run"]
+ENTRYPOINT ["/run"]
 # CMD ["uvicorn", "main:app", "--port", "8000"]
