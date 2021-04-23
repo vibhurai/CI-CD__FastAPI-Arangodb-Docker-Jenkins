@@ -1,5 +1,5 @@
 FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8 AS mybuildstage
-COPY ./Assignment_2 /Assignment_2
+
 # CMD ["cwd"]
 COPY requirements.txt /tmp
 WORKDIR /tmp
@@ -11,6 +11,7 @@ WORKDIR /Assignment_2
 
 FROM ubuntu
 CMD ["dir"]
+COPY ./Assignment_2 /Assignment_2
 COPY --from=mybuildstage /tmp/requirements.txt ./tmp
 
 # WORKDIR /~
