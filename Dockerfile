@@ -2,7 +2,7 @@ FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8 AS compile-image
 # CMD ["cwd"]
 RUN python -m venv /opt/venv
 # ENV PATH="/opt/venv/bin"
-CMD ["source","vevn/Scripts/activate"]
+CMD ["source","./opt/vevn/Scripts/activate"]
 
 COPY requirements.txt .
 # WORKDIR /tmp
@@ -15,17 +15,18 @@ CMD ["dir"]
 # WORKDIR /Assignment_2
 
 
-# FROM ubuntu
-# COPY --from=compile-image /root/.local /root/.local
-# # COPY --from=mybuildstage /tmp/requirements.txt ./tmp
-# COPY ./Assignment_2 /Assignment_2
+FROM ubuntu
+COPY --from=compile-image /opt/venv /opt/venv
+CMD ["source","./opt/vevn/Scripts/activate"]
+# COPY --from=mybuildstage /tmp/requirements.txt ./tmp
+COPY ./Assignment_2 /Assignment_2
 
 # # CMD ["dir"]
 # # WORKDIR /~
-# EXPOSE 8000
+EXPOSE 8000
 
-# WORKDIR /Assignment_2
+WORKDIR /Assignment_2
 # ENV PATH="/opt/venv/bin"
 # CMD ["source","vevn/Scripts/activate"]
 # # CMD ["ls"]
-# CMD ["uvicorn", "main:app", "--port", "8000"]
+CMD ["uvicorn", "main:app", "--port", "8000"]
