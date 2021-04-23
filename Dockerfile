@@ -6,13 +6,14 @@ ENV PATH="/opt/venv/bin"
 COPY requirements.txt .
 # WORKDIR /tmp
 # RUN pip install -r requirements.txt
-RUN pip install -r requirements.txt 
+RUN pip install --user -r requirements.txt
 CMD ["dir"]
+RUN pip install --user .
 # RUN chmod +x /Assignment_2/run.sh
 # WORKDIR /Assignment_2
 
 FROM ubuntu
-COPY --from=compile-image /opt/venv /opt/venv
+COPY --from=compile-image /root/.local /root/.local
 # COPY --from=mybuildstage /tmp/requirements.txt ./tmp
 COPY ./Assignment_2 /Assignment_2
 
