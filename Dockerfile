@@ -21,5 +21,6 @@ COPY ./Assignment_2 /Assignment_2
 EXPOSE 8000
 
 WORKDIR /Assignment_2
+ENV PATH="/opt/venv/bin:$PATH"
 # CMD ["ls"]
 CMD ["uvicorn", "main:app", "--port", "8000"]
