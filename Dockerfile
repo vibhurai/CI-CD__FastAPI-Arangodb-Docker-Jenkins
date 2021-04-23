@@ -1,4 +1,4 @@
-FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8 AS mybuildstage
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8
 COPY ./Assignment_2 /Assignment_2
 COPY requirements.txt /tmp
 WORKDIR /tmp
@@ -8,13 +8,10 @@ RUN pip install -r requirements.txt
 RUN chmod +x /Assignment_2/run.sh
 WORKDIR /Assignment_2
 CMD ["dir"]
-FROM ubuntu
-COPY --from=mybuildstage /tmp/requirements.txt ./tmp
-
 
 # WORKDIR /~
-EXPOSE 8069
+EXPOSE 8000
 
-WORKDIR /Assignment_2
-CMD ["ls"]
+# WORKDIR /Assignment_2
+# CMD ["ls"]
 # CMD ["uvicorn", "main:app", "--port", "8000"]
