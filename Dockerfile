@@ -15,13 +15,14 @@ CMD ["dir"]
 # WORKDIR /Assignment_2
 
 
-# FROM ubuntu
-# COPY --from=compile-image /opt/venv /opt/venv
-# CMD ["source","./opt/vevn/Scripts/activate"]
-# # COPY --from=mybuildstage /tmp/requirements.txt ./tmp
-# COPY ./Assignment_2 /Assignment_2
+FROM ubuntu
+COPY --from=compile-image /opt/venv /opt/venv
+WORKDIR /opt/venv/Lib/site-packages
+CMD ["source","./opt/vevn/Scripts/activate"]
+# COPY --from=mybuildstage /tmp/requirements.txt ./tmp
+COPY ./Assignment_2 /Assignment_2
 
-# # # CMD ["dir"]
+CMD ["dir"]
 # # # WORKDIR /~
 # EXPOSE 8000
 
