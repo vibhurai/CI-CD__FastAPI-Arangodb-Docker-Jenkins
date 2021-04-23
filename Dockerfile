@@ -20,6 +20,6 @@ COPY ./Assignment_2 /Assignment_2
 # WORKDIR /~
 EXPOSE 8000
 
-# WORKDIR /Assignment_2
+WORKDIR /Assignment_2
 # CMD ["ls"]
 CMD ["uvicorn", "main:app", "--port", "8000"]
