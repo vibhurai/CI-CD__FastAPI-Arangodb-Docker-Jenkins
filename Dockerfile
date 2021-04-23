@@ -1,5 +1,4 @@
-FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8 AS mybuildstage
-
+FROM ubuntu
 # CMD ["cwd"]
 COPY requirements.txt /tmp
 WORKDIR /tmp
@@ -12,8 +11,8 @@ RUN pip install -r requirements.txt
 FROM ubuntu
 COPY ./Assignment_2 /Assignment_2
 
-COPY --from=mybuildstage /tmp/requirements.txt ./tmp
-CMD ["dir"]
+# COPY --from=mybuildstage /tmp/requirements.txt ./tmp
+# CMD ["dir"]
 # WORKDIR /~
 EXPOSE 8000
 
