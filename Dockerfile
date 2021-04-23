@@ -5,7 +5,7 @@ COPY requirements.txt /tmp
 WORKDIR /tmp
 # RUN pip install -r requirements.txt
 RUN pip install -r requirements.txt 
-# CMD ["dir"]
+CMD ["dir"]
 RUN chmod +x /Assignment_2/run.sh
 # WORKDIR /Assignment_2
 
