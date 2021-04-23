@@ -3,7 +3,7 @@ FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8 AS compile-image
 RUN python -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 
-COPY requirements.txt 
+COPY requirements.txt .
 # WORKDIR /tmp
 # RUN pip install -r requirements.txt
 RUN pip install -r requirements.txt 
