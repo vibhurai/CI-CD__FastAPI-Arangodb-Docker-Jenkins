@@ -1,7 +1,7 @@
 FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8 AS compile-image
 # CMD ["cwd"]
 RUN python -m venv /opt/venv
-ENV PATH="/opt/venv/bin:$PATH"
+ENV PATH="/opt/venv/bin"
 
 COPY requirements.txt .
 # WORKDIR /tmp
@@ -21,6 +21,6 @@ COPY ./Assignment_2 /Assignment_2
 EXPOSE 8000
 
 WORKDIR /Assignment_2
-ENV PATH="/opt/venv/bin:$PATH"
+ENV PATH="/opt/venv/bin"
 # CMD ["ls"]
 CMD ["uvicorn", "main:app", "--port", "8000"]
