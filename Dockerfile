@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # I suggest you open the dockerfile in VSCode or some coding editor, it wont be that readable on notepad.
 # Okay, so the file im about to send is a bit difficult to understnad but understandable nevertheless. I have been working and trying different things on this file and since i needed it all to be in a place, i've commented most of the the things but dont worry, the comments are also done in a manner...so you'd understand. Here it goes....
 
@@ -64,3 +65,38 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 # CMD ["uvicorn", "main:app", "--reload"]
 # # , "127.0.0.1", "--port", "8000"]
 # # [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+=======
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8 AS compile-image
+# CMD ["cwd"]
+RUN python -m venv /opt/venv
+# ENV PATH="/opt/venv/bin"
+CMD ["source","./opt/vevn/Scripts/activate"]
+
+COPY requirements.txt .
+# WORKDIR /tmp
+# RUN pip install -r requirements.txt
+
+RUN pip install -r requirements.txt
+CMD ["dir"]
+# RUN pip install --user .
+# RUN chmod +x /Assignment_2/run.sh
+# WORKDIR /Assignment_2
+
+
+FROM ubuntu
+COPY --from=compile-image /opt/venv /opt/venv
+WORKDIR /opt/venv/Lib/site-packages
+CMD ["source","./opt/vevn/Scripts/activate"]
+# COPY --from=mybuildstage /tmp/requirements.txt ./tmp
+COPY ./Assignment_2 /Assignment_2
+
+CMD ["dir"]
+# # # WORKDIR /~
+# EXPOSE 8000
+
+# WORKDIR /Assignment_2
+# # ENV PATH="/opt/venv/bin"
+# # CMD ["source","vevn/Scripts/activate"]
+# # # CMD ["ls"]
+# CMD ["uvicorn", "main:app", "--port", "8000"]
+>>>>>>> 431fa609e3c29ab8c83ed257cdede6b13347260b

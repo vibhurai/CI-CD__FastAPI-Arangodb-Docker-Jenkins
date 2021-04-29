@@ -20,6 +20,11 @@ starlette==0.13.6
 toml==0.10.2
 typing-extensions==3.7.4.3
 urllib3==1.26.4
+<<<<<<< HEAD
 uvicorn==0.13.4
 watchgod==0.7
 websockets==8.1
+=======
+
+
+>>>>>>> 431fa609e3c29ab8c83ed257cdede6b13347260b
