@@ -29,7 +29,7 @@ RUN pip install -r requirements.txt
 FROM python:3.9.0-alpine
 COPY --from=compile-image /opt/env /opt/env
 ENV PATH="/opt/env/bin:$PATH"
-RUN pip install python3.9
+# RUN pip install python3.9
 # RUN echo ${PATH}
 # CMD ["pip", "list"]
 
