@@ -28,7 +28,7 @@
       function curr_db(e) {
         let actor_nm = document.getElementById("actor_nm").value;
 
-        fetch(`http://127.0.0.1:8000/actor`, {
+        fetch(`/actor`, {
           method: "POST",
           body: JSON.stringify({
             name: actor_nm,
@@ -40,7 +40,7 @@
         let actor_nm_last = document.getElementById("actor_nm_last").value;
         let actor_nm = document.getElementById("actor_nm_up").value;
 
-        fetch(`http://127.0.0.1:8000/actor/${actor_nm_last}`, {
+        fetch(`/actor/${actor_nm_last}`, {
           method: "PATCH",
           body: JSON.stringify({
             name: actor_nm,
@@ -51,7 +51,7 @@
       function curr_db_del() {
         let actor_nm = document.getElementById("actor_nm_del").value;
 
-        fetch(`http://127.0.0.1:8000/actor`, {
+        fetch(`/actor`, {
           method: "DELETE",
           body: JSON.stringify({
             key: actor_nm,

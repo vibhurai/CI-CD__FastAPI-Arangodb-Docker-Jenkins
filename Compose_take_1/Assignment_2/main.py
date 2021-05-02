@@ -8,9 +8,19 @@ from pydantic import BaseModel
 import json
 
 # connect to the arangodb database
-client = ArangoClient()
-sys_db = client.db('_system', username='root', password='passwd')
-db = client.db('movies_database', username='root', password='passwd')
+client = ArangoClient("http://db:8529")
+sys_db = client.db('_system', username='root', password='pass')
+
+if not sys_db.has_database('movies_database'):
+    sys_db.create_database('movies_database')
+
+db = client.db('movies_database', username='root', password='pass')
+
+if db.has_collection('actors'):
+    actors = db.collection('actors')
+else:
+    actors = db.create_collection('actors')
+
 actors = db.collection('actors')
 
 app = FastAPI()
@@ -76,3 +86,6 @@ async def read_db( request: Request):
     jsonStr = json.dumps(lt)
     # return templates.TemplateResponse("data.html" ,{"request": request, "list": lt})
     return jsonStr
+
+if __name__ == "__main__":
+    app.run(debug=True, host='0.0.0.0', port=8800)
