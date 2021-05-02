@@ -1,3 +1,4 @@
+<<<<<<< HEAD:Compose_take_1/Pipeline_script.txt
 node {
      stage('SCM Checkout'){
        git 'https://github.com/vibhurai/fastpi_arangodc_cicd.git'
@@ -27,3 +28,32 @@ node {
   }
    
 }
+=======
+node{
+        stage('SCM Checkout'){
+           git 'https://github.com/vibhurai/fastpi_arangodc_cicd.git'
+        }
+        
+        stage('Testing step'){
+            sh '''cd Assignment_2
+            pytest
+            cd ..
+            dir'''
+        }
+        
+        stage('Building image'){
+            sh 'docker build -t kaustubhrai/demo_image:2.0.0 .'
+        }
+        
+        stage('Push Docker Image to DocekrHub'){
+            withCredentials([string(credentialsId: 'dockerhubpass', variable: 'dockerhubpass')]) {
+                sh "docker login -u kaustubhrai -p ${dockerhubpass}"
+            }
+            sh 'docker push kaustubhrai/demo_image:2.0.0'
+        }
+           
+        stage('Contanierising and running image'){
+            sh 'docker run -p 8000:8000 kaustubhrai/demo_image:2.0.0'
+        }
+}
+>>>>>>> 7db918ae91763134e4e01250cd3e3039fda74271:Pipeline_script.txt
